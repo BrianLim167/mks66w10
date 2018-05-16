@@ -1,3 +1,5 @@
+from vector import *
+
 class Light(object):
 
     def __init__( self, location, color ):
@@ -11,4 +13,22 @@ class Light(object):
                  ambient_light[2]*reflection[2] ]
 
     def diffuse_color( self, reflection, normal ):
-        
+        normal_mul = Vector.dot(self.location, normal)
+        if ( normal_mul < 0 ):
+            normal_mul = 0
+        return [ self.color[0] * reflection[0] * normal_mul,
+                 self.color[1] * reflection[1] * normal_mul,
+                 self.color[2] * reflection[2] * normal_mul ]
+
+    def specular_color( self, reflection, view, normal, specular_exp=8 ):
+        normal_mul = 2 * Vector.dot(self.location, normal)
+        v = Vector([ (normal[0] * normal_mul) - light.location[0],
+                     (normal[1] * normal_mul) - light.location[1],
+                     (normal[2] * normal_mul) - light.location[2] ])
+        view_mul = Vector.dot(v, view)
+        if ( view_mul < 0 ):
+            view_mul = 0
+        view_mul = view_mul ** specular_exp
+        return [ self.color[0] * reflection[0] * view_mul,
+                 self.color[1] * reflection[1] * view_mul,
+                 self.color[2] * reflection[2] * view_mul ]

@@ -211,10 +211,12 @@ class PPMGrid(object):
         for i in range(len(cmd)):
             e = Matrix(0,4)
             p = Matrix(0,4)
-            r = [] ######################@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-            view = [0,0,1]
-            ambient_light = []
-            light_sources = []
+            r = [ [255,255,255],
+                  [255,255,255],
+                  [255,255,255] ]
+            view = Vector([0,0,1])
+            ambient_light = [50,50,50]
+            light_sources = [ Light( Vector([0,0,1]), [180,20,20] ) ]
             
             if ( i != len(cmd)-1 ):
                 args = cmd[i+1].split()
