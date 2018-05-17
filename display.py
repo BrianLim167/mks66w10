@@ -190,7 +190,7 @@ class PPMGrid(object):
         cy1 = int(top[1]) - int(mid[1]) * 1.0
         dx1 = (top[0] - mid[0])/cy1 if cy1 != 0 else 0
         dz1 = (top[2] - mid[2])/cy1 if cy1 != 0 else 0
-        while ( y < int(top[1]) ):
+        while ( y <= int(top[1]) ):
             self.draw_line(int(x0),y,z0,int(x1),y,z1,color)
             y += 1
             x0 += dx0
@@ -211,12 +211,12 @@ class PPMGrid(object):
         for i in range(len(cmd)):
             e = Matrix(0,4)
             p = Matrix(0,4)
-            r = [ [255,255,255],
-                  [255,255,255],
-                  [255,255,255] ]
+            r = [ [1,1,1],
+                  [1,1,1],
+                  [1,1,1] ]
             view = Vector([0,0,1])
-            ambient_light = [50,50,50]
-            light_sources = [ Light( Vector([0,0,1]), [180,20,20] ) ]
+            ambient_light = [100,100,100]
+            light_sources = [ Light( Vector([1,1,1]).norm(), [180,20,20] ) ]
             
             if ( i != len(cmd)-1 ):
                 args = cmd[i+1].split()

@@ -190,7 +190,7 @@ class Matrix(object):
         step = 1/count
         t = 0
         m = Matrix(0,4)
-        while ( t < 1 ):
+        while ( t <= 1 ):
             a = math.radians(180*t+90)
             m.add_point(cx + r*math.cos(a), cy + r*math.sin(a), cz)
             if ( edge ):
@@ -288,7 +288,7 @@ class Matrix(object):
         step = 1/count
         m = Matrix(0,4)
         t = 0
-        while ( t < 1 ):
+        while ( t <= 1 ):
             rota = Matrix.rotx(360 * t       )
             rotb = Matrix.rotx(360 * (t+step))
             rotc = Matrix.rotx(360 * (t-step))

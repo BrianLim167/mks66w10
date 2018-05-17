@@ -18,6 +18,7 @@ class Prop(object):
         view = view.norm()
 
         ambient_color = Light.ambient_color(ambient_light, self.reflection[0])
+
         r_color = ambient_color[0]
         g_color = ambient_color[1]
         b_color = ambient_color[2]
